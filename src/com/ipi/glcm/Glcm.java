@@ -1,7 +1,7 @@
 package com.ipi.glcm;
 
 import com.ipi.domain.GlcmFeatures;
-import com.ipi.domain.GlcmMatrix;
+import com.ipi.statisticaltools.Statistical;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,7 @@ public final class Glcm {
     public static void getGlcm(List<List<Integer>> image, int d) {
         int length = takeMaximumGrayLevel(image);
         GlcmFeatures features = makeGlcm(image, d,  length);
-        features.getFortyFiveDegree().getElements().forEach( f -> {
-            f.forEach( g -> System.out.printf("%2d ", g));
-            System.out.println();
-        });
+
     }
 
     private static GlcmFeatures makeGlcm(List<List<Integer>> image, int d, int length) {

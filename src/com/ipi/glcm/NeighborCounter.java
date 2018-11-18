@@ -2,7 +2,6 @@ package com.ipi.glcm;
 
 import com.ipi.domain.GlcmFeatures;
 import com.ipi.domain.GlcmMatrix;
-import com.ipi.util.ConstantsAngles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,25 +18,12 @@ public final class NeighborCounter {
     }
 
     private static void countNeighborhood(List<List<Integer>> image, GlcmFeatures matrix, List<Integer> current) {
-        for (int angle : ConstantsAngles.ANGLES) {
-            choiceAngle(image, matrix, current, angle);
-        }
+        zeroDegreeCounter(image, current, matrix.getZeroDegree());
+        fortyFiveDegreeCounter(image, current, matrix.getFortyFiveDegree());
+        ninetyDegreeCounter(image, current, matrix.getNinetyDegree());
+        oneHundredThirtyFiveCounter(image, current, matrix.getOneHundredThirtyFiveDegre());
     }
 
-    private static void choiceAngle(List<List<Integer>> image, GlcmFeatures matrix, List<Integer> current, int angle) {
-        switch (angle) {
-            case 0:
-                zeroDegreeCounter(image, current, matrix.getZeroDegree());
-                break;
-            case 45:
-                fortyFiveDegreeCounter(image, current, matrix.getFortyFiveDegree());
-                break;
-            case 90:
-                break;
-            case 135:
-                break;
-        }
-    }
 
     private static void zeroDegreeCounter(List<List<Integer>> image, List<Integer> current, GlcmMatrix glcmMatrix) {
         if ((current.get(1) + glcmMatrix.getD()) < image.get(0).size()) {
@@ -58,7 +44,22 @@ public final class NeighborCounter {
 
     private static void ninetyDegreeCounter(List<List<Integer>> image, List<Integer> current,
             GlcmMatrix glcmMatrix) {
+        if (current.get(0) + glcmMatrix.getD() < image.size()) {
+            int i = image.get(current.get(0)).get(current.get(1));
+            int j = image.get(current.get(0) + glcmMatrix.getD()).get(current.get(1));
+            glcmMatrix.incrementElement(i, j);
+        }
     }
+
+    private static void oneHundredThirtyFiveCounter(List<List<Integer>> image, List<Integer> current,
+            GlcmMatrix glcmMatrix) {
+        if (current.get(0) + glcmMatrix.getD() < image.size() && current.get(1) + glcmMatrix.getD() < image.get(0).size()) {
+            int i = image.get(current.get(0)).get(current.get(1));
+            int j = image.get(current.get(0) + glcmMatrix.getD()).get(current.get(1) + glcmMatrix.getD());
+            glcmMatrix.incrementElement(i, j);
+        }
+    }
+
 
     private static List<Integer> makeList(int i, int j) {
         List<Integer> positions = new ArrayList<>();
