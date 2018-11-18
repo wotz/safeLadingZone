@@ -11,7 +11,7 @@ public class GlcmMatrix {
 
     private List<List<Double>> elements;
 
-    private int length;
+    private Double length;
 
     private Double contrast;
 
@@ -45,11 +45,11 @@ public class GlcmMatrix {
         this.elements = elements;
     }
 
-    public int getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
@@ -85,7 +85,7 @@ public class GlcmMatrix {
         this.homogeneity = homogeneity;
     }
 
-    public GlcmMatrix(int d, int angle, int length) {
+    public GlcmMatrix(int d, int angle, Double length) {
         this.d = d;
         this.angle = angle;
         this.length = length;

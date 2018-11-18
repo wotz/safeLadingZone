@@ -1,19 +1,23 @@
 package com.ipi.imagemanager;
 
+import javax.imageio.ImageIO;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
+import java.util.OptionalDouble;
 
 public class ImageManager {
 
-    public static int takeMaximumGrayLevel(List<List<Integer>> image) {
-        List<List<Integer>> clone = new ArrayList<>(image);
-        int maxLevel = 0;
-        for (List<Integer> intensities : clone) {
-            OptionalInt newMax = intensities.stream().mapToInt(Integer::intValue).max();
-            if (newMax.isPresent() && newMax.getAsInt() > maxLevel) {
-                maxLevel = newMax.getAsInt();
+    public static double takeMaximumGrayLevel(List<List<Double>> image) {
+        List<List<Double>> clone = new ArrayList<>(image);
+        Double maxLevel = 0.0;
+        for (List<Double> intensities : clone) {
+            OptionalDouble newMax = intensities.stream().mapToDouble(Double::doubleValue).max();
+            if (newMax.isPresent() && newMax.getAsDouble() > maxLevel) {
+                maxLevel = newMax.getAsDouble();
             }
         }
         return maxLevel;
@@ -35,6 +39,34 @@ public class ImageManager {
             }
         }
         return grayscale;
+    }
+
+    public static List<List<Double>> convertToDoubleList(BufferedImage image, int d, int angle) {
+        BufferedImage grayImage = toGrayScale(image);
+        List<List<Double>> newImage = new ArrayList<>();
+        for (int i = 0; i < grayImage.getWidth(); i ++){
+            List<Double> jValues = new ArrayList<>();
+            for (int j = 0; j < grayImage.getHeight(); j ++) {
+                Color pixel = new Color(grayImage.getRGB(i, j));
+                int blue = pixel.getBlue();
+                jValues.add((double)blue);
+            }
+            newImage.add(jValues);
+        }
+        return newImage;
+    }
+
+    // Lê uma imagem no caminho path
+    public static BufferedImage read(String path) throws IOException {
+        BufferedImage imagem = ImageIO.read(new File(path));
+        return imagem;
+    }
+
+    // Salva uma imagem no caminho path
+    public static void write(BufferedImage imagem, String path) throws IOException{
+        File output_file = new File(path);
+
+        ImageIO.write(imagem, "bmp", output_file);
     }
 
 }

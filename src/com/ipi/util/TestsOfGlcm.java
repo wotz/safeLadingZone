@@ -10,8 +10,8 @@ public final class TestsOfGlcm {
     }
 
 
-    public static List<List<Integer>> doTestMatrix() {
-        List<List<Integer>> result = new ArrayList<>();
+    public static List<List<Double>> doTestMatrix() {
+        List<List<Double>> result = new ArrayList<>();
         result.add(doTheLineOne());
         result.add(doTheLineTwo());
         result.add(doTheLineTwoLine());
@@ -22,64 +22,64 @@ public final class TestsOfGlcm {
         return result;
     }
 
-    private static List<Integer> doTheLineOne() {
-        List<Integer> lineOne = new ArrayList<>();
-        lineOne.add(0);
-        lineOne.add(0);
-        lineOne.add(3);
-        lineOne.add(2);
-        lineOne.add(2);
+    private static List<Double> doTheLineOne() {
+        List<Double> lineOne = new ArrayList<>();
+        lineOne.add(0.0);
+        lineOne.add(0.0);
+        lineOne.add(3.0);
+        lineOne.add(2.0);
+        lineOne.add(2.0);
         return  lineOne;
     }
 
-    private static List<Integer> doTheLineTwo() {
-        List<Integer> lineTwo = new ArrayList<>();
-        lineTwo.add(2);
-        lineTwo.add(0);
-        lineTwo.add(1);
-        lineTwo.add(0);
-        lineTwo.add(2);
+    private static List<Double> doTheLineTwo() {
+        List<Double> lineTwo = new ArrayList<>();
+        lineTwo.add(2.0);
+        lineTwo.add(0.0);
+        lineTwo.add(1.0);
+        lineTwo.add(0.0);
+        lineTwo.add(2.0);
         return  lineTwo;
     }
 
-    private static List<Integer> doTheLineTwoLine() {
-        List<Integer> lineTwo = new ArrayList<>();
-        lineTwo.add(2);
-        lineTwo.add(0);
-        lineTwo.add(2);
-        lineTwo.add(0);
-        lineTwo.add(2);
+    private static List<Double> doTheLineTwoLine() {
+        List<Double> lineTwo = new ArrayList<>();
+        lineTwo.add(2.0);
+        lineTwo.add(0.0);
+        lineTwo.add(2.0);
+        lineTwo.add(0.0);
+        lineTwo.add(2.0);
         return  lineTwo;
     }
 
-    private static List<Integer> doTheLineThree() {
-        List<Integer> lineThree = new ArrayList<>();
-        lineThree.add(1);
-        lineThree.add(0);
-        lineThree.add(1);
-        lineThree.add(0);
-        lineThree.add(2);
+    private static List<Double> doTheLineThree() {
+        List<Double> lineThree = new ArrayList<>();
+        lineThree.add(1.0);
+        lineThree.add(0.0);
+        lineThree.add(1.0);
+        lineThree.add(0.0);
+        lineThree.add(2.0);
         return  lineThree;
     }
 
-    private static List<Integer> doTheLineFour() {
-        List<Integer> lineFour = new ArrayList<>();
-        lineFour.add(2);
-        lineFour.add(1);
-        lineFour.add(0);
-        lineFour.add(0);
-        lineFour.add(2);
+    private static List<Double> doTheLineFour() {
+        List<Double> lineFour = new ArrayList<>();
+        lineFour.add(2.0);
+        lineFour.add(1.0);
+        lineFour.add(0.0);
+        lineFour.add(0.0);
+        lineFour.add(2.0);
         return  lineFour;
 
     }
 
-    private static List<Integer> doTheLineFive() {
-        List<Integer> lineFive = new ArrayList<>();
-        lineFive.add(2);
-        lineFive.add(0);
-        lineFive.add(0);
-        lineFive.add(0);
-        lineFive.add(3);
+    private static List<Double> doTheLineFive() {
+        List<Double> lineFive = new ArrayList<>();
+        lineFive.add(2.0);
+        lineFive.add(0.0);
+        lineFive.add(0.0);
+        lineFive.add(0.0);
+        lineFive.add(3.0);
         return  lineFive;
     }
 

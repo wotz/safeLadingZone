@@ -11,15 +11,15 @@ public final class Glcm {
     public Glcm() {
     }
 
-    public static GlcmFeatures getGlcm(List<List<Integer>> image, int d) {
-        int length = ImageManager.takeMaximumGrayLevel(image);
+    public static GlcmFeatures getGlcm(List<List<Double>> image, int d) {
+        Double length = ImageManager.takeMaximumGrayLevel(image);
         GlcmFeatures features = makeGlcm(image, d,  length);
         normalizeGlcmFeatures(features);
         getStatisticalData(features);
         return features;
     }
 
-    private static GlcmFeatures makeGlcm(List<List<Integer>> image, int d, int length) {
+    private static GlcmFeatures makeGlcm(List<List<Double>> image, int d, Double length) {
         GlcmFeatures features = new GlcmFeatures( d, length);
         NeighborCounter.countOccurrences(image, features);
         return features;

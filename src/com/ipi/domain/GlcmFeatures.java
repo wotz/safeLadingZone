@@ -10,7 +10,7 @@ public class GlcmFeatures {
 
     private GlcmMatrix oneHundredThirtyFiveDegre;
 
-    int length;
+    Double length;
 
     int d;
 
@@ -46,11 +46,11 @@ public class GlcmFeatures {
         this.oneHundredThirtyFiveDegre = oneHundredThirtyFiveDegre;
     }
 
-    public int getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
@@ -62,7 +62,7 @@ public class GlcmFeatures {
         this.d = d;
     }
 
-    public GlcmFeatures(int d, int length) {
+    public GlcmFeatures(int d, Double length) {
         this.length = length;
         this.d = d;
         this.zeroDegree = new GlcmMatrix(d, 0, length);
@@ -75,5 +75,20 @@ public class GlcmFeatures {
         this.ninetyDegree.initializeElements();
         this.oneHundredThirtyFiveDegre.initializeElements();
 
+    }
+
+    public GlcmMatrix getGlcmMatrixByAngle(int angle) {
+        switch (angle) {
+            case 0:
+                return this.getZeroDegree();
+            case 45:
+                return this.getFortyFiveDegree();
+            case 90:
+                return this.getNinetyDegree();
+            case 135:
+                return this.getOneHundredThirtyFiveDegre();
+            default:
+                return null;
+        }
     }
 }
