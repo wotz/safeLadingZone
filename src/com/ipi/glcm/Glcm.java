@@ -1,5 +1,6 @@
 package com.ipi.glcm;
 
+import com.ipi.domain.GlcmFeatures;
 import com.ipi.domain.GlcmMatrix;
 
 import java.util.ArrayList;
@@ -11,20 +12,19 @@ public final class Glcm {
     public Glcm() {
     }
 
-    public static void getGlcm(List<List<Integer>> image,  Boolean symmetric, int d, int angle) {
+    public static void getGlcm(List<List<Integer>> image, int d) {
         int length = takeMaximumGrayLevel(image);
-        GlcmMatrix glcmMatrix = makeGlcm(image, symmetric, d, angle, length);
-        glcmMatrix.getElements().forEach( f -> {
+        GlcmFeatures features = makeGlcm(image, d,  length);
+        features.getFortyFiveDegree().getElements().forEach( f -> {
             f.forEach( g -> System.out.printf("%2d ", g));
             System.out.println();
         });
     }
 
-    private static GlcmMatrix makeGlcm(List<List<Integer>> image,  Boolean symmetric, int d, int angle, int length) {
-        GlcmMatrix matrix = new GlcmMatrix(symmetric, d, angle, length);
-        matrix.initializeElements();
-        NeighborCounter.countOccurrences(image, matrix);
-        return matrix;
+    private static GlcmFeatures makeGlcm(List<List<Integer>> image, int d, int length) {
+        GlcmFeatures features = new GlcmFeatures( d, length);
+        NeighborCounter.countOccurrences(image, features);
+        return features;
     }
 
 

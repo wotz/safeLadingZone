@@ -5,8 +5,6 @@ import java.util.List;
 
 public class GlcmMatrix {
 
-    private Boolean symmetric;
-
     private int d;
 
     private int angle;
@@ -14,18 +12,6 @@ public class GlcmMatrix {
     private List<List<Integer>> elements;
 
     private int length;
-
-    public Boolean getSymmetric() {
-        return symmetric;
-    }
-
-    public void setSymmetric(Boolean symmetric) {
-        symmetric = symmetric;
-    }
-
-    public Boolean isSymmetric() {
-        return this.symmetric;
-    }
 
     public int getD() {
         return d;
@@ -52,8 +38,7 @@ public class GlcmMatrix {
     }
 
 
-    public GlcmMatrix(Boolean isSymmetric, int d, int angle, int length) {
-        this.symmetric = isSymmetric;
+    public GlcmMatrix(int d, int angle, int length) {
         this.d = d;
         this.angle = angle;
         this.length = length;

@@ -9,7 +9,14 @@ public class Main {
 
     public static void main(String[] args) {
         List<List<Integer>> image = TestsOfGlcm.doTestMatrix();
-        Glcm.getGlcm(image, Boolean.TRUE, 1, 0);
+        image.forEach( f -> {
+            f.forEach( g -> System.out.printf("%2d ", g));
+            System.out.println();
+        });
+        System.out.println();
+        System.out.println();
+
+        Glcm.getGlcm(image, 1);
     }
 
 //
