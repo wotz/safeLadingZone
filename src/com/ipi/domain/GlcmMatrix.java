@@ -9,9 +9,17 @@ public class GlcmMatrix {
 
     private int angle;
 
-    private List<List<Integer>> elements;
+    private List<List<Double>> elements;
 
     private int length;
+
+    private Double contrast;
+
+    private Double correlation;
+
+    private Double energy;
+
+    private Double homogeneity;
 
     public int getD() {
         return d;
@@ -29,14 +37,53 @@ public class GlcmMatrix {
         this.angle = angle;
     }
 
-    public List<List<Integer>> getElements() {
+    public List<List<Double>> getElements() {
         return elements;
     }
 
-    public void setElements(List<List<Integer>> elements) {
+    public void setElements(List<List<Double>> elements) {
         this.elements = elements;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public Double getContrast() {
+        return contrast;
+    }
+
+    public void setContrast(Double contrast) {
+        this.contrast = contrast;
+    }
+
+    public Double getCorrelation() {
+        return correlation;
+    }
+
+    public void setCorrelation(Double correlation) {
+        this.correlation = correlation;
+    }
+
+    public Double getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(Double energy) {
+        this.energy = energy;
+    }
+
+    public Double getHomogeneity() {
+        return homogeneity;
+    }
+
+    public void setHomogeneity(Double homogeneity) {
+        this.homogeneity = homogeneity;
+    }
 
     public GlcmMatrix(int d, int angle, int length) {
         this.d = d;
@@ -48,9 +95,9 @@ public class GlcmMatrix {
         if (this.length > 0) {
             this.elements = new ArrayList<>();
             for (int i = 0; i <= this.length; i++){
-                List<Integer> jValues = new ArrayList<>();
+                List<Double> jValues = new ArrayList<>();
                 for (int j = 0; j <= this.length; j++) {
-                    jValues.add(0);
+                    jValues.add(0.0);
                 }
                 this.elements.add(jValues);
             }
@@ -58,6 +105,19 @@ public class GlcmMatrix {
     }
 
     public void incrementElement(int i, int j) {
-        this.elements.get(i).set(j, this.elements.get(i).get(j) + 1);
+        this.elements.get(i).set(j, this.elements.get(i).get(j) + 1.0);
+    }
+
+    @Override
+    public String toString() {
+        return "GlcmMatrix{" +
+                "d=" + d +
+                ", angle=" + angle +
+                ", length=" + length +
+                ", contrast=" + contrast +
+                ", correlation=" + correlation +
+                ", energy=" + energy +
+                ", homogeneity=" + homogeneity +
+                '}';
     }
 }

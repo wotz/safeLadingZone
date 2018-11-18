@@ -1,5 +1,6 @@
 package com.ipi;
 
+import com.ipi.domain.GlcmFeatures;
 import com.ipi.glcm.Glcm;
 import com.ipi.util.TestsOfGlcm;
 
@@ -9,38 +10,12 @@ public class Main {
 
     public static void main(String[] args) {
         List<List<Integer>> image = TestsOfGlcm.doTestMatrix();
-        image.forEach( f -> {
-            f.forEach( g -> System.out.printf("%2d ", g));
-            System.out.println();
-        });
-        System.out.println();
-        System.out.println();
+        GlcmFeatures features = Glcm.getGlcm(image, 1);
+        System.out.println(features.getZeroDegree().toString());
+        System.out.println(features.getFortyFiveDegree().toString());
+        System.out.println(features.getNinetyDegree().toString());
+        System.out.println(features.getOneHundredThirtyFiveDegre().toString());
 
-        Glcm.getGlcm(image, 1);
     }
 
-//
-//    private static Boolean fortyFiveDegreeValidation(List<List<Integer>> image, List<Integer> glcm,
-//            List<Integer> current) {
-//        if (current.get(0) == 0 || (current.get(1) + 1) == image.get(0).size()) {
-//            return Boolean.FALSE;
-//        }
-//        return image.get(current.get(0) - 1).get(current.get(1) + 1) == glcm.get(1);
-//    }
-//
-//    private static Boolean ninetyDegreeValidation(List<List<Integer>> image, List<Integer> glcm,
-//            List<Integer> current) {
-//        if ((current.get(1) + 1 ) == image.get(0).size()) {
-//            return Boolean.FALSE;
-//        }
-//        return image.get(current.get(0)).get(current.get(1) + 1) == glcm.get(1);
-//    }
-//
-//    private static Boolean oneHundredThirtyFiveDegreeValidation(List<List<Integer>> image, List<Integer> glcm,
-//            List<Integer> current) {
-//        if ((current.get(0) + 1 ) == image.size() || (current.get(1) + 1) == image.get(0).size()) {
-//            return Boolean.FALSE;
-//        }
-//        return image.get(current.get(0)).get(current.get(1) + 1) == glcm.get(1);
-//    }
 }

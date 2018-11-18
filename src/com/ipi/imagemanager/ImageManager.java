@@ -1,8 +1,24 @@
 package com.ipi.imagemanager;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalInt;
 
 public class ImageManager {
+
+    public static int takeMaximumGrayLevel(List<List<Integer>> image) {
+        List<List<Integer>> clone = new ArrayList<>(image);
+        int maxLevel = 0;
+        for (List<Integer> intensities : clone) {
+            OptionalInt newMax = intensities.stream().mapToInt(Integer::intValue).max();
+            if (newMax.isPresent() && newMax.getAsInt() > maxLevel) {
+                maxLevel = newMax.getAsInt();
+            }
+        }
+        return maxLevel;
+    }
+
 
     // Transforma img em escala de cinza
     public static BufferedImage toGrayScale(BufferedImage img) {
