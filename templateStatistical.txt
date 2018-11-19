@@ -1,0 +1,7 @@
+tamanho
+distancia
+angulo
+contraste
+correlação
+energia
+homogeneidade

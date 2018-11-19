@@ -14,7 +14,7 @@ public class Main {
         GlcmFeatures glcmFeatures = Glcm.getGlcm(image, 1);
 
         WriterModule.saveInformations("/opt/projetos/safeLadingZone/src/com/ipi/data/classifier/"
-                , "teste", glcmFeatures);
+                , "luisa", glcmFeatures);
     }
     //        GlcmFeatures features = Glcm.getGlcm(image, 1);
     //        System.out.println(features.getZeroDegree().toString());
